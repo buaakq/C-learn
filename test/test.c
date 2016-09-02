@@ -2,10 +2,9 @@
 
 int main()
 {
-	char x = '\0';
-	printf("the actual value is %x\n", x);
-	int a = 123;
-	scanf("%d", &a);
-	printf("%d\n", a);
-	return 0;
+	int i = 0;
+	unsigned int sum = 0;
+	for (; i < 16; i++)
+			sum = sum + (1U<<i);
+	printf("sum = 0x%x\n", sum);
 }
