@@ -1,0 +1,2 @@
+what is cc? what's the relationship between cc and gcc?
+  cc is a link file, usually points to GCC.
