@@ -97,3 +97,150 @@ Doule quotes: can do the following;
 - \\ = \
 - \" = "
 ```
+
+## Bash Startup Scripts
+
+### interactive login shell
+
+When login:
+
+1) run `/etc/profile`
+2) search and run `~/.bash_profile`, `~/.bash_login` and `~/.profile`
+
+When logout: run `~/.bash_logout`
+
+### interacitve non-login shell
+
+When using `ssh`, run terminal program or type `bash` in a shell, you get an
+interactive non-login shell.
+
+This kind of shell will run `~/.bashrc`.
+
+Usually we recommend putting your local var, env, and alias in this file.
+
+### non-interactive shell
+
+A non-interactive shell is created to execute a shell script. It inherits all
+env but not local var and alias.
+
+This kind of shell executs no scripts.
+
+## Shell Script Grammar
+
+### conditional test
+
+Use `test` or `[` command to test a condition.
+
+Test commands include:
+
+```
+[ -d DIR ]: true if DIR is a directory
+[ -f FILE ]: true if FILE exists.
+[ -z STRING ]: true if len(STRING) is 0
+[ -n STRING ]: true if len(STRING) > 0
+[ STRING1 = STRING2 ]: true if STRING1 equals STRING2 
+[ STRING1 != STRING2 ]: true if STRING1 doesn't equal STRING2 
+[ ARG1 OP ARG2 ]: ARG1 and ARG2 should be numbers.
+OP can be:
+  -eq: =
+  -ne: !=
+  -lt: <
+  -le: <=
+  -gt: >
+  -gt: >=
+```
+
+Shell also supports logical expressions:
+```
+[ ! EXPR ]: reverse EXPR
+[ EXPR1 -a EXPR2 ]: and
+[ EXPR1 -o EXPR2 ]: or
+```
+
+### conditioncal branching
+
+Shell supports `if`, `else`, `elif`, `fi`, which are similar with C. See a
+short example below:
+```
+if [ "$INPUT" = "yes" ]; then
+   echo "good morning"
+elif [ "$INPUT" = "no" ]; then
+   echo "good evening"
+else
+   echo "bye bye"
+fi
+```
+
+In shell, `&&` and `||` can be used to connect commands.
+`&&` means `if ... then ...`, `||` measn `if not ... then ...`.
+
+Shell also support `case`, which is similar with `switch/case` in C. See a 
+simple program below:
+
+```
+case $COLOR in 
+red|Red)
+   echo "red";;
+[gG]*)
+   echo "green;;
+*)
+   echo "not found";;
+```
+
+All commands must end with `;;`.
+
+### loop
+
+For loop looks like `foreach`:
+```
+for COLOR in red, green, blue; do
+   echo "I like $COLOR"
+done
+```
+
+While loop is similar with while in C:
+```
+COUNTER=1
+while [ "$COUNTER" -le "10" ]; do
+   echo "number = $COUNTER"
+   COUNTER=$(($COUNTER+1))
+done
+```
+
+### special var
+
+```
+$0, $1, $2..., $n: command-line args, argv[n] in C
+$#: argc - 1
+$@: argument list(except $0), i.e.,  "$1" "$2" ...
+$?: exit status of last command
+$$: PID of current shell
+```
+
+### function
+
+See a sample function below:
+
+```
+print_max()
+{
+   if [ $# -eq 0 ]; then
+      return 1
+   MAX=$1
+   for NUM in $@; do
+      if [ $NUM -gt $MAX ]; then
+         MAX=$NUM
+      fi
+   done
+   echo "$MAX"
+   return 0
+}
+```
+
+## How to debug shell script
+
+1) `-n`: read the script but not execute
+2) `-v`: run the script, print all commands to stderr
+3) `-x`: run and print all commands and output to stdout
+
+use `+` to disable debug argument.
