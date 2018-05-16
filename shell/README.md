@@ -1,5 +1,8 @@
 # Shell
 
+[Shell Script Quick References](https://www.shellscript.sh/quickref.html)
+[Shell Script Tips](https://www.shellscript.sh/tips/)
+
 ## History
 
 Different kinds of shell:
@@ -282,6 +285,9 @@ $@: argument list(except $0), i.e.,  "$1" "$2" ...
 $?: exit status of last command
 $$: PID of current shell
 ```
+
+An interesting special var is `$IFS`, complete name is "Internal Field
+Separator", which specifies the default separator when you input from console.
 
 ### function
 
