@@ -1,7 +1,8 @@
 # Shell
 
-[Shell Script Quick References](https://www.shellscript.sh/quickref.html)
-[Shell Script Tips](https://www.shellscript.sh/tips/)
+References:
+- [Shell Script Quick References](https://www.shellscript.sh/quickref.html)
+- [Shell Script Tips](https://www.shellscript.sh/tips/)
 
 ## History
 
@@ -143,8 +144,8 @@ Test commands include:
 [ -f FILE ]: true if FILE exists.
 [ -z STRING ]: true if len(STRING) is 0
 [ -n STRING ]: true if len(STRING) > 0
-[ STRING1 = STRING2 ]: true if STRING1 equals STRING2 
-[ STRING1 != STRING2 ]: true if STRING1 doesn't equal STRING2 
+[ STRING1 = STRING2 ]: true if STRING1 equals STRING2
+[ STRING1 != STRING2 ]: true if STRING1 doesn't equal STRING2
 [ ARG1 OP ARG2 ]: ARG1 and ARG2 should be numbers.
 OP can be:
   -eq: =
@@ -207,8 +208,8 @@ Test commands include:
 [ -f FILE ]: true if FILE exists.
 [ -z STRING ]: true if len(STRING) is 0
 [ -n STRING ]: true if len(STRING) > 0
-[ STRING1 = STRING2 ]: true if STRING1 equals STRING2 
-[ STRING1 != STRING2 ]: true if STRING1 doesn't equal STRING2 
+[ STRING1 = STRING2 ]: true if STRING1 equals STRING2
+[ STRING1 != STRING2 ]: true if STRING1 doesn't equal STRING2
 [ ARG1 OP ARG2 ]: ARG1 and ARG2 should be numbers.
 OP can be:
   -eq: =
@@ -243,11 +244,11 @@ fi
 In shell, `&&` and `||` can be used to connect commands.
 `&&` means `if ... then ...`, `||` measn `if not ... then ...`.
 
-Shell also support `case`, which is similar with `switch/case` in C. See a 
+Shell also support `case`, which is similar with `switch/case` in C. See a
 simple program below:
 
 ```
-case $COLOR in 
+case $COLOR in
 red|Red)
    echo "red";;
 [gG]*)
