@@ -167,7 +167,7 @@ Shell also supports logical expressions:
 
 Shell supports `if`, `else`, `elif`, `fi`, which are similar with C. See a
 short example below:
-```
+
 ## Bash Startup Scripts
 
 ### interactive login shell
